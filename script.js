@@ -1,3 +1,7 @@
+//Doesn't work unless page is refreshed manually each time
+//works when first run but then breaks
+//how to reset values to empty after click before functions
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 //^^already in hmw file - created for event listener
@@ -70,7 +74,7 @@ function writePassword() {
 
 
   for(var i = 0; i < userLength; i++) {
-    finalArr.push(Math.floor(Math.random() * logicArr.length))
+    finalArr.push(logicArr[Math.floor(Math.random() * logicArr.length)])
   }
   console.log("This is my final Array")
   console.log(finalArr)
