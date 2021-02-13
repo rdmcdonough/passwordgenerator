@@ -86,15 +86,29 @@ function showPasswordGenerated () {
 //when button is clicked run writePassword function then diplay generated password
 //passwordGenerated needs to be displayed.. 
   if (userLength > 4) {
-    passwordSpan.textContent = (passwordGenerated + "worked");
-    console.log("show password function worked if wokred is shown in box");
+    passwordSpan.textContent = (passwordGenerated);
   } else {
     passwordSpan.textContent = ("password must have a length greater than 4");
   }
 
-  if (!lowerCaseChoice || !upperCaseChoice || !numberChoice || !specialChoice) {
+  if ((userLength < 5) && (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice)) {
+    passwordSpan.textContent = ("password must have a length greater than 4 and consist of lowercase letters, uppercase letters, numbers, or special characters");
+  } else if (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice) {
     passwordSpan.textContent = ("password must consist of lowercase letters, uppercase letters, numbers, or special characters");
-  }
+  } 
+
+
+  // if ((userLength < 5) && (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice)) {
+  //   passwordSpan.textContent = ("password must have a length greater than 4 and consist of lowercase letters, uppercase letters, numbers, or special characters");
+  // }
+  
+  // else if (!lowerCaseChoice || !upperCaseChoice || !numberChoice || !specialChoice) {
+  //   passwordSpan.textContent = ("password must consist of lowercase letters, uppercase letters, numbers, or special characters");
+  //   } 
+  // else {
+  //   passwordSpan.textContent = (passwordGenerated + "worked");
+  //   console.log("show password function worked if worked is shown in box");
+  // }
 
 }
 
@@ -103,7 +117,7 @@ function showPasswordGenerated () {
 //^^ already in hmw file
 generateBtn.addEventListener("click", function() {
   console.log("hello");
-  userLength = prompt("What length do you want your password?");
+  userLength = prompt("What length do you want your password? *minimum of 5*");
   console.log("password length is " + userLength);
   lowerCaseChoice = confirm("Do you want lower case?");
   console.log("Do you want lowercase?" + lowerCaseChoice);
@@ -116,6 +130,4 @@ generateBtn.addEventListener("click", function() {
   writePassword();
   showPasswordGenerated();
 });
-
-
 
