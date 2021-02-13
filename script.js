@@ -1,6 +1,9 @@
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+//^^already in hmw file - created for event listener
 
 var passwordSpan = document.querySelector("#password");
-//created as psuedo code for using textContent downline to fill in the user generated password
+//created for using textContent downline to fill in the user generated password
 
 var passwordGenerated = "";
 //password starts as empty vessel to be generated then final string get pushed in
@@ -26,51 +29,67 @@ var logicArr = [];
 //must create array the length of the user slected "what length do you want your password?" promt
 var finalArr = [];
 
-//must fill logicArray with all the content the user selects in confirms
-if (lowerCaseChoice) {
-   for(var i = 0; i < lowerCaseArr.length; i++) {
-       logicArr.push(lowerCaseArr[i])
-   } else {
 
-   }
-}
+// Write password to the #password input
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-if (upperCaseChoice) {
-    for(var i =0; i < upperCaseArr.length; i++) {
-        logicArr.push(upperCaseArr[i])
+  passwordText.value = password;
+ //^^^already written in homework file - need to check variables match
+
+  //must fill logicArray with all the content the user selects in confirms
+  if (lowerCaseChoice) {
+    for(var i = 0; i < lowerCaseArr.length; i++) {
+        logicArr.push(lowerCaseArr[i])
     } else {
 
     }
-}
+  }
 
-if (numberChoice) {
-    for(var i = 0; i < numberArr.length; i++) {
-        logicArr.push(numberArr[i])
+  if (upperCaseChoice) {
+     for(var i =0; i < upperCaseArr.length; i++) {
+         logicArr.push(upperCaseArr[i])
     } else {
 
     }
-}
+  }
 
-if (specialChoice) {
-    for(var i = 0; i < specialArr.length; i++) {
-        logicArr.push(specialArr[i])
+  if (numberChoice) {
+     for(var i = 0; i < numberArr.length; i++) {
+         logicArr.push(numberArr[i])
     } else {
 
     }
-}
+  }
 
-// so far created a master array of user defined content possibilty by pushing into logicArr
-//must fill finalArr with RANDOM selection of items from logicArr with a length equal to userLength
+  if (specialChoice) {
+     for(var i = 0; i < specialArr.length; i++) {
+         logicArr.push(specialArr[i])
+    } else {
+
+    }
+  }
+
+   // so far created a master array of user defined content possibilty by pushing into logicArr
+  //must fill finalArr with RANDOM selection of items from logicArr with a length equal to userLength
 
 
-for(var i = 0; i < userLength; i++) {
+  for(var i = 0; i < userLength; i++) {
     finalArr.push(logicArr(Math.floor(Math.random() * logicArr.length)))
+  }
+
+  // now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
+  //this finalArr has to be transformed into a string in order to be used as password
+  //this final string is then pushed to passwordGenerated
+  passwordGenerated.push(finalArr.join(""));
 }
 
-// now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
-//this finalArr has to be transformed into a string in order to be used as password
-//this final string is then pushed to passwordGenerated
-passwordGenerated.push(finalArr.join(""));
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+//^^ already in hmw file
 
+//when button is clicked run writePassword function then diplay generated password
 //passwordGenerated needs to be displayed.. 
 passwordSpan.textContent = passwordGenerated;
