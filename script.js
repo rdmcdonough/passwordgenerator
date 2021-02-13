@@ -1,6 +1,6 @@
 
 
-var userLength = prompt("What length do you want your password?")
+var userLength = prompt("What length do you want your password?");
 // this will be used to create the length of finalArr
 
 //must create arrays of all possible password content for user to choose to use array or not use array
@@ -15,7 +15,7 @@ var specialArr = "!#$%&'()*+,-./:;<=>?@^_`{|}~".split("");
 var lowerCaseChoice = confirm("Do you want lower case?");
 var upperCaseChoice = confirm("Do you want Upper case?");
 var numberChoice = confirm("Do you want numbers?");
-var specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'")
+var specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
 
 //must create array of all possible password content after user selection
 var logicArr = [];
@@ -63,6 +63,6 @@ for(var i = 0; i < userLength; i++) {
     finalArr.push(logicArr(Math.floor(Math.random() * logicArr.length)))
 }
 
-
-
+// now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
+//this finalArr has to be transformed into a string in order to be used as password
 console.log(finalArr.join(""))
