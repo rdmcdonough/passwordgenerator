@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 var passwordSpan = document.querySelector("#password");
 //created for using textContent downline to fill in the user generated password
 
-var passwordGenerated = "";
+var passwordGenerated = [];
 //password starts as empty vessel to be generated then final string get pushed in
 // var userLength = prompt("What length do you want your password?");
 // this will be used to create the length of finalArr
@@ -63,7 +63,8 @@ function writePassword() {
          logicArr.push(specialArr[i])
     } 
   }
-
+  console.log("This is my logic Array");
+  console.log(logicArr)
    // so far created a master array of user defined content possibilty by pushing into logicArr
   //must fill finalArr with RANDOM selection of items from logicArr with a length equal to userLength
 
@@ -71,18 +72,30 @@ function writePassword() {
   for(var i = 0; i < userLength; i++) {
     finalArr.push(Math.floor(Math.random() * logicArr.length))
   }
-
+  console.log("This is my final Array")
+  console.log(finalArr)
   // now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
   //this finalArr has to be transformed into a string in order to be used as password
   //this final string is then pushed to passwordGenerated
   passwordGenerated.push(finalArr.join(""));
+  console.log("This is the generated password")
+  console.log(passwordGenerated)
 }
 
 function showPasswordGenerated () {
 //when button is clicked run writePassword function then diplay generated password
 //passwordGenerated needs to be displayed.. 
-passwordSpan.textContent = (passwordGenerated + "worked");
-console.log("show password function worked if wokred is shown in box");
+  if (userLength > 4) {
+    passwordSpan.textContent = (passwordGenerated + "worked");
+    console.log("show password function worked if wokred is shown in box");
+  } else {
+    passwordSpan.textContent = ("password must have a length greater than 4");
+  }
+
+  if (!lowerCaseChoice || !upperCaseChoice || !numberChoice || !specialChoice) {
+    passwordSpan.textContent = ("password must consist of lowercase letters, uppercase letters, numbers, or special characters");
+  }
+
 }
 
 // Add event listener to generate button
@@ -91,16 +104,18 @@ console.log("show password function worked if wokred is shown in box");
 generateBtn.addEventListener("click", function() {
   console.log("hello");
   userLength = prompt("What length do you want your password?");
-  console.log(userLength);
+  console.log("password length is " + userLength);
   lowerCaseChoice = confirm("Do you want lower case?");
-  console.log(lowerCaseChoice);
+  console.log("Do you want lowercase?" + lowerCaseChoice);
   upperCaseChoice = confirm("Do you want Upper case?");
-  console.log(upperCaseChoice);
+  console.log("Do you want uppercase?" + upperCaseChoice);
   numberChoice = confirm("Do you want numbers?");
-  console.log(numberChoice);
+  console.log("Do you want numbers?" + numberChoice);
   specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
-  console.log(specialChoice)
-  // writePassword();
+  console.log("Do you want special?" + specialChoice)
+  writePassword();
   showPasswordGenerated();
 });
+
+
 
