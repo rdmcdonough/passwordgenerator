@@ -1,8 +1,8 @@
 
-var passwordSpan = document.querySelector("#password")
+var passwordSpan = document.querySelector("#password");
 //created as psuedo code for using textContent downline to fill in the user generated password
 
-var passwordGenerated = ("")
+var passwordGenerated = "";
 //password starts as empty vessel to be generated then final string get pushed in
 var userLength = prompt("What length do you want your password?");
 // this will be used to create the length of finalArr
