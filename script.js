@@ -7,7 +7,7 @@ var passwordSpan = document.querySelector("#password");
 
 var passwordGenerated = "";
 //password starts as empty vessel to be generated then final string get pushed in
-var userLength = prompt("What length do you want your password?");
+// var userLength = prompt("What length do you want your password?");
 // this will be used to create the length of finalArr
 
 //must create arrays of all possible password content for user to choose to use array or not use array
@@ -19,10 +19,10 @@ var numberArr = "0123456789".split("");
 var specialArr = "!#$%&'()*+,-./:;<=>?@^_`{|}~".split("");
 
 //must ask user what content they want in password
-var lowerCaseChoice = confirm("Do you want lower case?");
-var upperCaseChoice = confirm("Do you want Upper case?");
-var numberChoice = confirm("Do you want numbers?");
-var specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
+// var lowerCaseChoice = confirm("Do you want lower case?");
+// var upperCaseChoice = confirm("Do you want Upper case?");
+// var numberChoice = confirm("Do you want numbers?");
+// var specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
 
 //must create array of all possible password content after user selection
 var logicArr = [];
@@ -33,43 +33,35 @@ var finalArr = [];
 // Write password to the #password input
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  // passwordText.value = password;
  //^^^already written in homework file - need to check variables match
 
   //must fill logicArray with all the content the user selects in confirms
   if (lowerCaseChoice) {
     for(var i = 0; i < lowerCaseArr.length; i++) {
         logicArr.push(lowerCaseArr[i])
-    } else {
-
-    }
+    } 
   }
 
   if (upperCaseChoice) {
      for(var i =0; i < upperCaseArr.length; i++) {
          logicArr.push(upperCaseArr[i])
-    } else {
-
-    }
+    } 
   }
 
   if (numberChoice) {
      for(var i = 0; i < numberArr.length; i++) {
          logicArr.push(numberArr[i])
-    } else {
-
-    }
+    } 
   }
 
   if (specialChoice) {
      for(var i = 0; i < specialArr.length; i++) {
          logicArr.push(specialArr[i])
-    } else {
-
-    }
+    } 
   }
 
    // so far created a master array of user defined content possibilty by pushing into logicArr
@@ -77,7 +69,7 @@ function writePassword() {
 
 
   for(var i = 0; i < userLength; i++) {
-    finalArr.push(logicArr(Math.floor(Math.random() * logicArr.length)))
+    finalArr.push(Math.floor(Math.random() * logicArr.length))
   }
 
   // now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
@@ -86,10 +78,29 @@ function writePassword() {
   passwordGenerated.push(finalArr.join(""));
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-//^^ already in hmw file
-
+function showPasswordGenerated () {
 //when button is clicked run writePassword function then diplay generated password
 //passwordGenerated needs to be displayed.. 
-passwordSpan.textContent = passwordGenerated;
+passwordSpan.textContent = (passwordGenerated + "worked");
+console.log("show password function worked if wokred is shown in box");
+}
+
+// Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword);
+//^^ already in hmw file
+generateBtn.addEventListener("click", function() {
+  console.log("hello");
+  userLength = prompt("What length do you want your password?");
+  console.log(userLength);
+  lowerCaseChoice = confirm("Do you want lower case?");
+  console.log(lowerCaseChoice);
+  upperCaseChoice = confirm("Do you want Upper case?");
+  console.log(upperCaseChoice);
+  numberChoice = confirm("Do you want numbers?");
+  console.log(numberChoice);
+  specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
+  console.log(specialChoice)
+  // writePassword();
+  showPasswordGenerated();
+});
+
