@@ -1,7 +1,3 @@
-//Doesn't work unless page is refreshed manually each time
-//works when first run but then breaks
-//how to reset values to empty after click before functions
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 //^^already in hmw file - created for event listener
