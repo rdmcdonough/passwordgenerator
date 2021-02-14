@@ -73,10 +73,7 @@ function writePassword() {
 
   for(var i = 0; i < userLength; i++) {
     passwordGenerated += logicArr[Math.floor(Math.random() * logicArr.length)]
-console.log(logicArr[Math.floor(Math.random() * logicArr.length)])
-  }
-  console.log("This is my final Array")
-  console.log(passwordGenerated)
+  } 
   // now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
   //this finalArr has to be transformed into a string in order to be used as password
   //this final string is then pushed to passwordGenerated
@@ -88,14 +85,14 @@ console.log(logicArr[Math.floor(Math.random() * logicArr.length)])
 function showPasswordGenerated () {
 //when button is clicked run writePassword function then diplay generated password
 //passwordGenerated needs to be displayed.. 
-  if (userLength > 4) {
+  if (userLength >= 8 && userLength <= 128) {
     passwordSpan.textContent = (passwordGenerated);
   } else {
-    passwordSpan.textContent = ("password must have a length greater than 4");
+    passwordSpan.textContent = ("password must have a length of at least 8 characters and no more than 128 characters");
   }
 
-  if ((userLength < 5) && (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice)) {
-    passwordSpan.textContent = ("password must have a length greater than 4 and consist of lowercase letters, uppercase letters, numbers, or special characters");
+  if ((userLength < 8 || userLength > 128) && (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice)) {
+    passwordSpan.textContent = ("password must have a length of at least 8 characters and no more than 128 characters, and consist of lowercase letters, uppercase letters, numbers, or special characters");
   } else if (!lowerCaseChoice && !upperCaseChoice && !numberChoice && !specialChoice) {
     passwordSpan.textContent = ("password must consist of lowercase letters, uppercase letters, numbers, or special characters");
   } 
@@ -120,10 +117,10 @@ function showPasswordGenerated () {
 //^^ already in hmw file
 generateBtn.addEventListener("click", function() {
   console.log("hello");
-  userLength = prompt("What length do you want your password? *minimum of 5 and must be in number format*");
+  userLength = prompt("What length do you want your password? *password must be in number format and at least 8 characers and no more than 128 characters*");
   
   if (!parseInt(userLength)) {
-    alert("must be input in number format")
+    alert("Password length must be input in number format")
   return
 }
 
@@ -138,6 +135,7 @@ generateBtn.addEventListener("click", function() {
   specialChoice = confirm("Do you want special characters? '!#$%&'()*+,-./:;<=>?@^_`{|}~'");
   console.log("Do you want special?" + specialChoice)
   writePassword();
+
   showPasswordGenerated();
 });
 
