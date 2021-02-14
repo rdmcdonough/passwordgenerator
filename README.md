@@ -8,4 +8,4 @@ Screenshot:
 ![picture](Assets/03-javascript-homework-demo.png)
 
 Link to deployed application:
-https://rdmcdonough.github.io/passwordgenerator/
+https://rdmcdonough.github.io/passwordgenerator/Develop/index.html
