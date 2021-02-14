@@ -9,7 +9,7 @@ var generateBtn = document.querySelector("#generate");
 var passwordSpan = document.querySelector("#password");
 //created for using textContent downline to fill in the user generated password
 
-var passwordGenerated = [];
+var passwordGenerated = "";
 //password starts as empty vessel to be generated then final string get pushed in
 // var userLength = prompt("What length do you want your password?");
 // this will be used to create the length of finalArr
@@ -31,12 +31,14 @@ var specialArr = "!#$%&'()*+,-./:;<=>?@^_`{|}~".split("");
 //must create array of all possible password content after user selection
 var logicArr = [];
 //must create array the length of the user slected "what length do you want your password?" promt
-var finalArr = [];
+// var finalArr = [];
 
 
 // Write password to the #password input
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function writePassword() {
+ passwordGenerated = ""
+ logicArr = []
   // var password = generatePassword();
   // var passwordText = document.querySelector("#password");
 
@@ -74,14 +76,15 @@ function writePassword() {
 
 
   for(var i = 0; i < userLength; i++) {
-    finalArr.push(logicArr[Math.floor(Math.random() * logicArr.length)])
+    passwordGenerated += logicArr[Math.floor(Math.random() * logicArr.length)]
+console.log(logicArr[Math.floor(Math.random() * logicArr.length)])
   }
   console.log("This is my final Array")
-  console.log(finalArr)
+  console.log(passwordGenerated)
   // now that finalArr is filled with random content of type chosen by user the length of user choice the password has been generated as finalArr which is Array format
   //this finalArr has to be transformed into a string in order to be used as password
   //this final string is then pushed to passwordGenerated
-  passwordGenerated.push(finalArr.join(""));
+  // passwordGenerated.push(finalArr.join(""));
   console.log("This is the generated password")
   console.log(passwordGenerated)
 }
@@ -110,7 +113,7 @@ function showPasswordGenerated () {
   //   passwordSpan.textContent = ("password must consist of lowercase letters, uppercase letters, numbers, or special characters");
   //   } 
   // else {
-  //   passwordSpan.textContent = (passwordGenerated + "worked");
+  //   passwordSpan.textContent = (passwordGenerated + "worked"); 
   //   console.log("show password function worked if worked is shown in box");
   // }
 
@@ -121,7 +124,14 @@ function showPasswordGenerated () {
 //^^ already in hmw file
 generateBtn.addEventListener("click", function() {
   console.log("hello");
-  userLength = prompt("What length do you want your password? *minimum of 5*");
+  userLength = prompt("What length do you want your password? *minimum of 5 and must be in number format*");
+  
+  if (!parseInt(userLength)) {
+    alert("must be input in number format")
+  return
+}
+
+
   console.log("password length is " + userLength);
   lowerCaseChoice = confirm("Do you want lower case?");
   console.log("Do you want lowercase?" + lowerCaseChoice);
